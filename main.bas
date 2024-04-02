@@ -583,10 +583,10 @@
 5830 REM movement ai behaviour data
 5840 DATA 1, 2, 3, 4, 5
 5850 DATA 6, 7, 8, 9, 10
-5860 DATA 12, 12, 13, 14, 14
-5870 DATA 12, 12, 13, 14, 14
-5880 DATA 12, 12, 13, 14, 14
-5890 DATA 12, 12, 13, 14, 14
+5860 DATA 12, 12, 14, 14, 14
+5870 DATA 12, 12, 12, 14, 14
+5880 DATA 12, 12, 14, 14, 14
+5890 DATA 12, 12, 12, 14, 14
 5900 REM shields
 5910 DATA "Front", "Right", " Rear", " Left"
 5920 REM helm computer instructions
