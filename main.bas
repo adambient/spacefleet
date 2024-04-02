@@ -131,7 +131,7 @@
 1310 RETURN 
 1320 REM initialise game
 1330 LET p = 1 :LET t = 0
-1340 GO SUB 6200
+1340 GO SUB 6340
 1350 GO SUB 2390
 1360 PRINT AT 17, 11; INK 5; "<SPACE FLEET>";
 1370 PRINT AT 19, 11; "Enter players 2-4? "; FLASH 1; CHR$ (143);
@@ -223,7 +223,7 @@
 2230 IF INKEY$ = "D" OR INKEY$ = "d" THEN LET d(p, 10) = 15 :LET k$ = "D":GO TO 2270
 2240 IF INKEY$ = "E" OR INKEY$ = "e" THEN LET d(p, 10) = 20 :LET k$ = "E":GO TO 2270
 2250 IF INKEY$ = "F" OR INKEY$ = "f" THEN LET d(p, 10) = 25 :LET k$ = "F":GO TO 2270
-2260 IF INKEY$ = "I" OR INKEY$ = "i" THEN GO SUB 6050 :GO TO 2150
+2260 IF INKEY$ = "I" OR INKEY$ = "i" THEN GO SUB 6120 :GO TO 2150
 2270 IF d(p, 10) = 1  THEN GO TO 2190
 2280 PRINT AT 19, 25; k$;
 2290 PRINT AT 20, 11; "Arc 1-5? "; FLASH 1; CHR$ (143); FLASH 0; "           ";
@@ -591,56 +591,70 @@
 5910 DATA "Front", "Right", " Rear", " Left"
 5920 REM helm computer instructions
 5930 CLS 
-5940 PRINT AT 16, 0; INK 5; "Helm"; AT 16, 5; "Computer";
-5950 PRINT AT 17, 0; "A"; PAPER 0; CHR$ (160); CHR$ (162); INK 0; PAPER 4; CHR$ (161); CHR$ (162); INK 4; PAPER 0; CHR$ (161); INK 0; PAPER 4; CHR$ (162); CHR$ (161); INK 4; PAPER 0; CHR$ (162); CHR$ (160);
-5960 PRINT AT 18, 1; " "; CHR$ (162); INK 0; PAPER 4; " "; CHR$ (162); INK 4; PAPER 0; CHR$ (162); INK 0; PAPER 4; CHR$ (162); " "; INK 4; PAPER 0; CHR$ (162); " ";
-5970 PRINT AT 19, 1; " "; CHR$ (161); INK 0; PAPER 4; " "; CHR$ (161); INK 4; PAPER 0; CHR$ (161); INK 0; PAPER 4; CHR$ (161); " "; INK 4; PAPER 0; CHR$ (161); " ";
-5980 PRINT AT 20, 0; "B"; INK 0; PAPER 4; CHR$ (160); CHR$ (162); INK 4; PAPER 0; CHR$ (161); CHR$ (162); INK 0; PAPER 4; CHR$ (161); INK 4; PAPER 0; CHR$ (162); CHR$ (161); INK 0; PAPER 4; CHR$ (162); CHR$ (160);
-5990 PRINT AT 21, 1; INK 0; PAPER 4; " "; CHR$ (161); INK 4; PAPER 0; " "; CHR$ (161); INK 0; PAPER 4; CHR$ (161); INK 4; PAPER 0; CHR$ (161); " "; INK 0; PAPER 4; CHR$ (161); " ";
-6000 PRINT #1; AT 0, 0; INK 4; "C   "; INK 0; PAPER 4; CHR$ (160); INK 4; PAPER 0; CHR$ (161); INK 0; PAPER 4; CHR$ (160); INK 4; PAPER 0; "   ";
-6010 PRINT #1; AT 1, 2; INK 4; "1 234 5 ";
-6020 GO SUB 2370
-6030 GO SUB 3190
-6040 RETURN 
-6050 REM combat display instructions
-6060 CLS 
-6070 PRINT AT 0, 0; INK 5; "Combat";
-6080 PRINT AT 1, 0; INK 5; "Display";
-6090 PRINT AT 2, 1; "12345";
-6100 PRINT AT 3, 0; "A"; PAPER 2; "     "; INK 2; PAPER 0; "4";
-6110 PRINT AT 4, 0; "B"; PAPER 6; " "; PAPER 2; "   "; PAPER 6; " "; INK 2; PAPER 0; "2";
-6120 PRINT AT 5, 0; "C"; PAPER 6; "  "; PAPER 2; " "; PAPER 6; "  "; INK 2; PAPER 0; "1";
-6130 PRINT AT 6, 0; "D"; PAPER 6; "  "; AT 6, 4; PAPER 6; "  ";
-6140 PRINT AT 7, 0; "E"; PAPER 6; "  "; PAPER 0; " "; PAPER 6; "  ";
-6150 PRINT AT 8, 0; "F"; PAPER 6; " "; PAPER 0; "   "; PAPER 6; " ";
-6160 PRINT AT 9, 4; INK 6; "31";
-6170 GO SUB 2370
-6180 GO SUB 3190
-6190 RETURN 
-6200 REM about SPACE FLEET
-6210 CLS 
-6220 PRINT AT 0, 0; INK 0; PAPER 5; "          SPACE FLEET           ";
-6230 PRINT AT 1, 0; "       ";
-6240 PRINT AT 2, 0; "In the grim dankness of the far future, there is only war.";
-6250 PRINT AT 5, 0; "Select 2-4 human or AI players, and do turn-based battle using  the "; INK 5; "<Helm Computer>"; INK 4; " for movementand "; INK 5; "<Combat Display>"; INK 4; " to attack.";
-6260 PRINT AT 10, 0; "Each are accessed via a console,through which further help is   available by entering [i]."
-6270 PRINT AT 14, 0; INK 6; "Press any key to begin."
-6280 PRINT #1; AT 0, 0; INK 1; CHR$ (152); CHR$ (153);
-6290 PRINT #1; AT 0, 3; INK 2; CHR$ (148); CHR$ (156);
-6300 PRINT #1; AT 0, 6; INK 3; CHR$ (148); CHR$ (149);
-6310 PRINT #1; AT 0, 9; INK 6; CHR$ (158); CHR$ (149);
-6320 PRINT #1; AT 0, 12; INK 5; CHR$ (144); CHR$ (145);
-6330 PRINT #1; AT 0, 15; INK 4; CHR$ (144); CHR$ (145);
-6340 PRINT #1; AT 0, 18; INK 2; CHR$ (144); CHR$ (145);
-6350 PRINT #1; AT 0, 21; INK 3; CHR$ (144); CHR$ (145);
-6360 PRINT #1; AT 1, 0; INK 1; CHR$ (150); CHR$ (151);
-6370 PRINT #1; AT 1, 3; INK 2; CHR$ (150); CHR$ (157);
-6380 PRINT #1; AT 1, 6; INK 3; CHR$ (154); CHR$ (155);
-6390 PRINT #1; AT 1, 9; INK 6; CHR$ (159); CHR$ (151);
-6400 PRINT #1; AT 1, 12; INK 5; CHR$ (146); CHR$ (147);
-6410 PRINT #1; AT 1, 15; INK 4; CHR$ (146); CHR$ (147);
-6420 PRINT #1; AT 1, 18; INK 2; CHR$ (146); CHR$ (147);
-6430 PRINT #1; AT 1, 21; INK 3; CHR$ (146); CHR$ (147);
-6440 PAUSE 0
-6450 CLS 
-6460 RETURN 
+5940 PRINT AT 0, 0; INK 0; PAPER 5; "          SPACE "; n$(p);"           ";
+5950 PRINT AT 2, 0; "Note the direction of your ship and consult the "; INK 5; "Helm Computer"; INK 4; ".  You must select a speed A-C and a manoeuvre 1-5."
+5960 PRINT AT 7, 0; "Example - A5 performs this move:"
+5970 PRINT AT 9, 2; INK u(p, 1); CHR$ (148); CHR$ (156); AT 10, 2; CHR$ (150); CHR$ (157); INK 4; " Also...";
+5980 PRINT AT 11, 5; "- Stay within map or die.";
+5990 PRINT AT 12, 5; "- Avoid planets."
+6000 PRINT AT 13, 0; INK u(p, 1); CHR$ (152); CHR$ (153); INK 4; "   - Optionally ram opponents"; AT 14, 0; INK u(p, 1); CHR$ (150); CHR$ (151);
+6010 PRINT AT 16, 0; INK 5; "Helm"; AT 16, 5; "Computer";
+6020 PRINT AT 17, 0; "A"; PAPER 0; CHR$ (160); CHR$ (162); INK 0; PAPER 4; CHR$ (161); CHR$ (162); INK 4; PAPER 0; CHR$ (161); INK 0; PAPER 4; CHR$ (162); CHR$ (161); INK 4; PAPER 0; CHR$ (162); CHR$ (160);
+6030 PRINT AT 18, 1; " "; CHR$ (162); INK 0; PAPER 4; " "; CHR$ (162); INK 4; PAPER 0; CHR$ (162); INK 0; PAPER 4; CHR$ (162); " "; INK 4; PAPER 0; CHR$ (162); " ";
+6040 PRINT AT 19, 1; " "; CHR$ (161); INK 0; PAPER 4; " "; CHR$ (161); INK 4; PAPER 0; CHR$ (161); INK 0; PAPER 4; CHR$ (161); " "; INK 4; PAPER 0; CHR$ (161); " ";
+6050 PRINT AT 20, 0; "B"; INK 0; PAPER 4; CHR$ (160); CHR$ (162); INK 4; PAPER 0; CHR$ (161); CHR$ (162); INK 0; PAPER 4; CHR$ (161); INK 4; PAPER 0; CHR$ (162); CHR$ (161); INK 0; PAPER 4; CHR$ (162); CHR$ (160);
+6060 PRINT AT 21, 1; INK 0; PAPER 4; " "; CHR$ (161); INK 4; PAPER 0; " "; CHR$ (161); INK 0; PAPER 4; CHR$ (161); INK 4; PAPER 0; CHR$ (161); " "; INK 0; PAPER 4; CHR$ (161); " ";
+6070 PRINT #1; AT 0, 0; INK 4; "C   "; INK 0; PAPER 4; CHR$ (160); INK 4; PAPER 0; CHR$ (161); INK 0; PAPER 4; CHR$ (160); INK 4; PAPER 0; "   ";
+6080 PRINT #1; AT 1, 2; INK 4; "1 234 5 ";
+6090 GO SUB 2370
+6100 GO SUB 3190
+6110 RETURN 
+6120 REM combat display instructions
+6130 CLS 
+6140 PRINT AT 0, 0; INK 0; PAPER 5; "          SPACE "; n$(p);"           ";
+6150 PRINT AT 2, 1; "12345  The "; INK 5; "Combat Display"; INK 4; " shows";
+6160 PRINT AT 3, 0; "A"; PAPER 2; "     "; INK 2; PAPER 0; "4"; INK 4; " enemies within range and";
+6170 PRINT AT 4, 0; "B"; PAPER 6; " "; PAPER 2; "   "; PAPER 6; " "; INK 2; PAPER 0; "2"; INK 4; " the A-F/1-5 combination";
+6180 PRINT AT 5, 0; "C"; PAPER 6; "  "; PAPER 2; " "; PAPER 6; "  "; INK 2; PAPER 0; "1"; INK 4; " to attack. The number of";
+6190 PRINT AT 6, 0; "D"; PAPER 6; "  "; INK u(p, 1); PAPER 0; CHR$ (161); AT 6, 4; PAPER 6; "  "; INK 4; PAPER 0; "  attacks correspond to";
+6200 PRINT AT 7, 0; "E"; PAPER 6; "  "; PAPER 0; " "; PAPER 6; "  "; INK 4; PAPER 0; "  the "; INK 2; "red "; INK 4; "and "; INK 6; "yellow";
+6210 PRINT AT 8, 0; "F"; PAPER 6; " "; PAPER 0; "   "; PAPER 6; " "; INK 4; PAPER 0; "  numbers.";
+6220 PRINT AT 9, 4; INK 6; "31";
+6230 GO SUB 2860
+6240 GO SUB 3060
+6250 PRINT AT 11, 8; "A player has 4 shields";
+6260 PRINT AT 12, 8; "and a hull. The "; INK 5; "Combat ";
+6270 PRINT AT 13, 8; INK 5; "Display"; INK 4; " can be used to";
+6280 PRINT AT 14, 8; "see which shield will be";
+6290 PRINT AT 15, 8; "hit.";
+6300 PRINT AT 17, 0; "The hull is damaged if there areno shields on the attacked side.When the hull reaches 0 the shipis destroyed.";
+6310 GO SUB 2370
+6320 GO SUB 3190
+6330 RETURN 
+6340 REM about SPACE FLEET
+6350 CLS 
+6360 PRINT AT 0, 0; INK 0; PAPER 5; "          SPACE FLEET           ";
+6370 PRINT AT 1, 0; "       ";
+6380 PRINT AT 2, 0; "In the grim darkness of the far future, there is only war.";
+6390 PRINT AT 5, 0; "Select 2-4 human or AI players, and do turn-based battle using  the "; INK 5; "<Helm Computer>"; INK 4; " for movementand "; INK 5; "<Combat Display>"; INK 4; " to attack.";
+6400 PRINT AT 10, 0; "Each are accessed via a console,through which further help is   available by entering [i]."
+6410 PRINT AT 14, 0; INK 6; "Press any key to begin."
+6420 PRINT #1; AT 0, 0; INK 1; CHR$ (152); CHR$ (153);
+6430 PRINT #1; AT 0, 3; INK 2; CHR$ (148); CHR$ (156);
+6440 PRINT #1; AT 0, 6; INK 3; CHR$ (148); CHR$ (149);
+6450 PRINT #1; AT 0, 9; INK 6; CHR$ (158); CHR$ (149);
+6460 PRINT #1; AT 0, 12; INK 5; CHR$ (144); CHR$ (145);
+6470 PRINT #1; AT 0, 15; INK 4; CHR$ (144); CHR$ (145);
+6480 PRINT #1; AT 0, 18; INK 2; CHR$ (144); CHR$ (145);
+6490 PRINT #1; AT 0, 21; INK 3; CHR$ (144); CHR$ (145);
+6500 PRINT #1; AT 1, 0; INK 1; CHR$ (150); CHR$ (151);
+6510 PRINT #1; AT 1, 3; INK 2; CHR$ (150); CHR$ (157);
+6520 PRINT #1; AT 1, 6; INK 3; CHR$ (154); CHR$ (155);
+6530 PRINT #1; AT 1, 9; INK 6; CHR$ (159); CHR$ (151);
+6540 PRINT #1; AT 1, 12; INK 5; CHR$ (146); CHR$ (147);
+6550 PRINT #1; AT 1, 15; INK 4; CHR$ (146); CHR$ (147);
+6560 PRINT #1; AT 1, 18; INK 2; CHR$ (146); CHR$ (147);
+6570 PRINT #1; AT 1, 21; INK 3; CHR$ (146); CHR$ (147);
+6580 PAUSE 0
+6590 CLS 
+6600 RETURN 
