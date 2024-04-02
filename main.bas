@@ -597,7 +597,7 @@
 5970 PRINT AT 9, 2; INK u(p, 1); CHR$ (148); CHR$ (156); AT 10, 2; CHR$ (150); CHR$ (157); INK 4; " Also...";
 5980 PRINT AT 11, 5; "- Stay within map or die.";
 5990 PRINT AT 12, 5; "- Avoid planets."
-6000 PRINT AT 13, 0; INK u(p, 1); CHR$ (152); CHR$ (153); INK 4; "   - Optionally ram opponents"; AT 14, 0; INK u(p, 1); CHR$ (150); CHR$ (151);
+6000 PRINT AT 13, 0; INK u(p, 1); CHR$ (152); CHR$ (153); INK 4; "   - Optionally ram opponents."; AT 14, 0; INK u(p, 1); CHR$ (150); CHR$ (151);
 6010 PRINT AT 16, 0; INK 5; "Helm"; AT 16, 5; "Computer";
 6020 PRINT AT 17, 0; "A"; PAPER 0; CHR$ (160); CHR$ (162); INK 0; PAPER 4; CHR$ (161); CHR$ (162); INK 4; PAPER 0; CHR$ (161); INK 0; PAPER 4; CHR$ (162); CHR$ (161); INK 4; PAPER 0; CHR$ (162); CHR$ (160);
 6030 PRINT AT 18, 1; " "; CHR$ (162); INK 0; PAPER 4; " "; CHR$ (162); INK 4; PAPER 0; CHR$ (162); INK 0; PAPER 4; CHR$ (162); " "; INK 4; PAPER 0; CHR$ (162); " ";
@@ -620,14 +620,14 @@
 6200 PRINT AT 7, 0; "E"; PAPER 6; "  "; PAPER 0; " "; PAPER 6; "  "; INK 4; PAPER 0; "  the "; INK 2; "red "; INK 4; "and "; INK 6; "yellow";
 6210 PRINT AT 8, 0; "F"; PAPER 6; " "; PAPER 0; "   "; PAPER 6; " "; INK 4; PAPER 0; "  numbers.";
 6220 PRINT AT 9, 4; INK 6; "31";
-6230 GO SUB 2860
-6240 GO SUB 3060
-6250 PRINT AT 11, 8; "A player has 4 shields";
-6260 PRINT AT 12, 8; "and a hull. The "; INK 5; "Combat ";
-6270 PRINT AT 13, 8; INK 5; "Display"; INK 4; " can be used to";
-6280 PRINT AT 14, 8; "see which shield will be";
-6290 PRINT AT 15, 8; "hit.";
-6300 PRINT AT 17, 0; "The hull is damaged if there areno shields on the attacked side.When the hull reaches 0 the shipis destroyed.";
+6230 PRINT AT 11, 8; "A player has 4 shields";
+6240 PRINT AT 12, 8; "and a hull. The "; INK 5; "Combat ";
+6250 PRINT AT 13, 8; INK 5; "Display"; INK 4; " can be used to";
+6260 PRINT AT 14, 8; "see which shield will be";
+6270 PRINT AT 15, 8; "hit.";
+6280 PRINT AT 17, 0; "The hull is damaged if there areno shields on the attacked side.When the hull reaches 0 the shipis destroyed.";
+6290 GO SUB 2860
+6300 GO SUB 3060
 6310 GO SUB 2370
 6320 GO SUB 3190
 6330 RETURN 
