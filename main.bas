@@ -361,7 +361,7 @@
 3610 PRINT AT 18, 11; INK u(p, 1); n$(p) ; INK 4; " ram planet! x4";
 3620 LET tx = 19
 3630 FOR i = 1  TO 4  STEP 1
-3640 IF RND * 9 < 5  THEN PRINT #FN s(tx); AT FN x(tx), 11; INK 4; "MISS!"; :GO TO 3680
+3640 IF RND * 9 < 4  THEN PRINT #FN s(tx); AT FN x(tx), 11; INK 4; "MISS!"; :GO TO 3680
 3650 IF d(p, 4) > 0  THEN LET d(p, 4) = d(p, 4) - 1 :PRINT #FN s(tx); AT FN x(tx), 11; INK 4; "RAM! "; s$(1); " shields -1"; :GO TO 3680
 3660 IF d(p, 8) > 1  THEN LET d(p, 8) = d(p, 8) - 1 :PRINT #FN s(tx); AT FN x(tx), 11; INK 4; "RAM! Hull -1"; :GO TO 3680
 3670 IF d(p, 8) = 1  THEN LET d(p, 8) = 0 :LET x = 0 :PRINT #FN s(tx); AT FN x(tx), 11; INK 4; "REM! Ship destroyed!"; :LET q = p :GO SUB 3010 :GO TO 3740
@@ -390,7 +390,7 @@
 3900 IF s > 7  THEN LET s = s - 4 :GO TO 3920
 3910 IF s < 4  THEN LET s = s + 4
 3920 FOR i = 1  TO 4  STEP 1
-3930 IF RND * 9 < 5  THEN PRINT #FN s(tx); AT FN x(tx), 11; INK 4; "MISS!"; :GO TO 3970
+3930 IF RND * 9 < 4  THEN PRINT #FN s(tx); AT FN x(tx), 11; INK 4; "MISS!"; :GO TO 3970
 3940 IF d(q, s) > 0  THEN LET d(q, s) = d(q, s) - 1 :PRINT #FN s(tx); AT FN x(tx), 11; INK 4; "RAM! "; s$(s - 3); " shields -1"; :GO TO 3970
 3950 IF d(q, 8) > 1  THEN LET d(q, 8) = d(q, 8) - 1 :PRINT #FN s(tx); AT FN x(tx), 11; INK 4; "RAM! Hull -1"; :GO TO 3970
 3960 IF d(q, 8) = 1  THEN LET d(q, 8) = 0 :PRINT #FN s(tx); AT FN x(tx), 11; INK 4; "RAM! Ship destroyed!"; :GO TO 3990
@@ -469,7 +469,7 @@
 4690 LET tx = 19
 4700 FOR i = 1  TO a(d(p, 10), 3)  STEP 1
 4710 IF d(q, 8) < 1  THEN GO TO 4760
-4720 IF RND * 9 < 5  THEN PRINT #FN s(tx); AT FN x(tx), 11; INK 4; "MISS!"; :GO TO 4760
+4720 IF RND * 9 < 4  THEN PRINT #FN s(tx); AT FN x(tx), 11; INK 4; "MISS!"; :GO TO 4760
 4730 IF d(q, s) > 0  THEN LET d(q, s) = d(q, s) - 1 :PRINT #FN s(tx); AT FN x(tx), 11; INK 4; "HIT! "; s$(s - 3); " shields -1"; :GO TO 4760
 4740 IF d(q, 8) > 1  THEN LET d(q, 8) = d(q, 8) - 1 :PRINT #FN s(tx); AT FN x(tx), 11; INK 4; "HIT! Hull -1"; :GO TO 4760
 4750 IF d(q, 8) = 1  THEN LET d(q, 8) = 0 :PRINT #FN s(tx); AT FN x(tx), 11; INK 4; "HIT! Ship destroyed!"; :GO SUB 3010
