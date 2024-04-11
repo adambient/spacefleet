@@ -25,36 +25,36 @@
  250 REM movement ai behaviours
  260 DIM v(6, 5)
  270 REM load attack vectors
- 280 RESTORE 5470
+ 280 RESTORE 6160
  290 FOR x = 1 TO 30 STEP 1
  300 FOR y = 1 TO 3 STEP 1
  310 READ a(x, y)
  320 NEXT y
  330 NEXT x
  340 REM load movement vectors
- 350 RESTORE 5580
+ 350 RESTORE 6270
  360 FOR x = 1 TO 15 STEP 1
  370 FOR y = 1 TO 3 STEP 1
  380 READ m(x, y)
  390 NEXT y
  400 NEXT x
  410 REM load player UIs, names and shields
- 420 RESTORE 5640
+ 420 RESTORE 6330
  430 FOR x = 1 TO 4 STEP 1
  440 FOR y = 1 TO 6 STEP 1
  450 READ u(x, y)
  460 NEXT y
  470 NEXT x
- 480 RESTORE 5690
+ 480 RESTORE 6380
  490 FOR x = 1 TO 4 STEP 1
  500 READ n$(x)
  510 NEXT x
- 520 RESTORE 6030
+ 520 RESTORE 6720
  530 FOR x = 1 TO 4 STEP 1
  540 READ s$(x)
  550 NEXT x
  560 REM load movement ai behaviours
- 570 RESTORE 5960
+ 570 RESTORE 6650
  580 FOR x = 1 TO 6 STEP 1
  590 FOR y = 1 TO 5 STEP 1
  600 READ v(x, y)
@@ -63,7 +63,7 @@
  630 REM load UDGs
  640 LET i = USR "a"
  650 LET t = i+8*19-1
- 660 RESTORE 5760
+ 660 RESTORE 6450
  670 FOR x = i TO t STEP 1
  680 READ y
  690 POKE x, y
@@ -114,7 +114,7 @@
 1140 GO TO 720
 1150 REM initialise game
 1160 LET p = 1 : LET t = 0
-1170 GO SUB 6460
+1170 GO SUB 5880
 1180 GO SUB 2220
 1190 PRINT AT 17, 11; INK 5; "<SPACE FLEET>";
 1200 PRINT AT 19, 11; "Enter players 2-4? "; FLASH 1; CHR$ (143);
@@ -137,7 +137,7 @@
 1370 NEXT x
 1380 NEXT y 
 1390 REM load player data
-1400 RESTORE 5710
+1400 RESTORE 6400
 1410 FOR x = 1 TO t STEP 1
 1420 FOR y = 1 TO 11 STEP 1
 1430 READ d(x, y)
@@ -181,7 +181,7 @@
 1810 PRINT AT 20, 11; "[i] for instructions.";
 1820 LET d(p, 9) = 1
 1830 PAUSE 0
-1840 IF INKEY$= "I" OR INKEY$= "i" THEN GO SUB 6040 : GO TO 1790
+1840 IF INKEY$= "I" OR INKEY$= "i" THEN GO SUB 5460 : GO TO 1790
 1850 IF INKEY$= "C" OR INKEY$= "c" OR d(p, 11) = 1 THEN LET d(p, 9) = 10 : LET k$ = "C": GO TO 1880
 1860 IF INKEY$= "B" OR INKEY$= "b" THEN LET d(p, 9) = 5 : LET k$ = "B": GO TO 1880
 1870 IF INKEY$= "A" OR INKEY$= "a" THEN LET d(p, 9) = 0 : LET k$ = "A": GO TO 1880
@@ -206,7 +206,7 @@
 2060 IF INKEY$= "D" OR INKEY$= "d" THEN LET d(p, 10) = 15 : LET k$ = "D": GO TO 2100
 2070 IF INKEY$= "E" OR INKEY$= "e" THEN LET d(p, 10) = 20 : LET k$ = "E": GO TO 2100
 2080 IF INKEY$= "F" OR INKEY$= "f" THEN LET d(p, 10) = 25 : LET k$ = "F": GO TO 2100
-2090 IF INKEY$= "I" OR INKEY$= "i" THEN GO SUB 6240 : GO TO 1980
+2090 IF INKEY$= "I" OR INKEY$= "i" THEN GO SUB 5660 : GO TO 1980
 2100 IF d(p, 10) = 1 THEN GO TO 2020
 2110 PRINT AT 19, 25; k$;
 2120 PRINT AT 20, 11; "Arc 1-5? "; FLASH 1; CHR$ (143); FLASH 0; "           ";
@@ -543,130 +543,130 @@
 5430 IF d(p, 1) > 0 AND d(p, 8) < 1 THEN LET l(d(p, 1), d(p, 2)) = 0 : LET d(p, 1) = 0
 5440 NEXT p
 5450 RETURN 
-5460 REM attack vectors data
-5470 DATA -3, -2, 4, -3, -1, 4, -3, 0, 4
-5480 DATA -3, 1, 4, -3, 2, 4, -2, -2, 1
-5490 DATA -2, -1, 2, -2, 0, 2, -2, 1, 2
-5500 DATA -2, 2, 1, -1, -2, 1, -1, -1, 3
-5510 DATA -1, 0, 1, -1, 1, 3, -1, 2, 1
-5520 DATA 0, -2, 1, 0, -1, 3, 0, 0, 0
-5530 DATA 0, 1, 3, 0, 2, 1, 1, -2, 1
-5540 DATA 1, -1, 3, 1, 0, 0, 1, 1, 3
-5550 DATA 1, 2, 1, 2, -2, 1, 2, -1, 0
-5560 DATA 2, 0, 0, 2, 1, 0, 2, 2, 1
-5570 REM movement vectors data
-5580 DATA -2, -1, -1, -2, -1, 0, -2, 0, 0
-5590 DATA -2, 1, 0, -2, 1, 1, -1, -1, -1
-5600 DATA -1, -1, 0, -1, 0, 0, -1, 1, 0
-5610 DATA -1, 1, 1, 0, 0, 0, 0, 0, -1
-5620 DATA 0, 0, 0, 0, 0, 1, 0, 0, 0
-5630 REM player UIs data
-5640 DATA 1, 5, 1, 1, 0, 0
-5650 DATA 2, 4, 5, 9, 3, 3
-5660 DATA 3, 2, 1, 9, 0, 3
-5670 DATA 6, 3, 5, 1, 3, 0
-5680 REM player names data
-5690 DATA "FLEET", "ELVES", "CHAOS", "HORDE"
-5700 REM player data
-5710 DATA 1, 1, 2, 3, 3, 3, 3, 4, 0, 0, 0
-5720 DATA 8, 12, 0, 3, 3, 3, 3, 4, 0, 0, 0
-5730 DATA 1, 12, 2, 3, 3, 3, 3, 4, 0, 0, 0
-5740 DATA 8, 1, 0, 3, 3, 3, 3, 4, 0, 0, 0
-5750 REM UDGs data
-5760 DATA 0, 3, 15, 31, 63, 63, 127, 127
-5770 DATA 0, 192, 240, 248, 252, 252, 254, 254 
-5780 DATA 127, 127, 63, 63, 31, 15, 3, 0 
-5790 DATA 254, 254, 252, 252, 248, 240, 192, 0
-5800 DATA 0, 0, 0, 0, 1, 7, 7, 15
-5810 DATA 0, 0, 0, 0, 128, 224, 224, 240 
-5820 DATA 15, 7, 7, 1, 0, 0, 0, 0
-5830 DATA 240, 224, 224, 128, 0, 0, 0, 0
-5840 DATA 0, 0, 0, 5, 15, 7, 15, 7
-5850 DATA 0, 0, 0, 160, 240, 224, 240, 224
-5860 DATA 7, 15, 7, 15, 5, 0, 0, 0 
-5870 DATA 224, 240, 224, 240, 160, 0, 0, 0 
-5880 DATA 0, 0, 0, 0, 80, 248, 240, 248 
-5890 DATA 248, 240, 248, 80, 0, 0, 0, 0 
-5900 DATA 0, 0, 0, 0, 10, 31, 15, 31 
-5910 DATA 31, 15, 31, 10, 0, 0, 0, 0 
-5920 DATA 0, 0, 0, 60, 60, 0, 0, 0 
-5930 DATA 0, 0, 24, 24, 24, 24, 0, 0 
-5940 DATA 0, 0, 0, 0, 24, 0, 0, 0
-5950 REM movement ai behaviour data
-5960 DATA 1, 2, 3, 4, 5
-5970 DATA 6, 7, 8, 9, 10
-5980 DATA 12, 12, 14, 14, 14
-5990 DATA 12, 12, 12, 14, 14
-6000 DATA 12, 12, 14, 14, 14
-6010 DATA 12, 12, 12, 14, 14
-6020 REM shields
-6030 DATA "Front", "Right", " Rear", " Left"
-6040 REM helm computer instructions
-6050 CLS 
-6060 PRINT AT 0, 0; INK 0; PAPER 5; "          SPACE "; n$(p);"           ";
-6070 PRINT AT 2, 0; "Note the direction of your ship and consult the "; INK 5; "Helm Computer"; INK 4; ".  You must select a speed A-C and a manoeuvre 1-5."
-6080 PRINT AT 7, 0; "Example - A5 performs this move:"
-6090 PRINT AT 9, 2; INK u(p, 1); CHR$ (148); CHR$ (156); AT 10, 2; CHR$ (150); CHR$ (157); INK 4; " Also...";
-6100 PRINT AT 11, 5; "- Stay within map or die.";
-6110 PRINT AT 12, 5; "- Avoid planets."
-6120 PRINT AT 13, 0; INK u(p, 1); CHR$ (152); CHR$ (153); INK 4; "   - Optionally ram opponents."; AT 14, 0; INK u(p, 1); CHR$ (150); CHR$ (151);
-6130 PRINT AT 16, 0; INK 5; "Helm"; AT 16, 5; "Computer";
-6140 PRINT AT 17, 0; "A"; PAPER 0; CHR$ (160); CHR$ (162); INK 0; PAPER 4; CHR$ (161); CHR$ (162); INK 4; PAPER 0; CHR$ (161); INK 0; PAPER 4; CHR$ (162); CHR$ (161); INK 4; PAPER 0; CHR$ (162); CHR$ (160);
-6150 PRINT AT 18, 1; " "; CHR$ (162); INK 0; PAPER 4; " "; CHR$ (162); INK 4; PAPER 0; CHR$ (162); INK 0; PAPER 4; CHR$ (162); " "; INK 4; PAPER 0; CHR$ (162); " ";
-6160 PRINT AT 19, 1; " "; CHR$ (161); INK 0; PAPER 4; " "; CHR$ (161); INK 4; PAPER 0; CHR$ (161); INK 0; PAPER 4; CHR$ (161); " "; INK 4; PAPER 0; CHR$ (161); " ";
-6170 PRINT AT 20, 0; "B"; INK 0; PAPER 4; CHR$ (160); CHR$ (162); INK 4; PAPER 0; CHR$ (161); CHR$ (162); INK 0; PAPER 4; CHR$ (161); INK 4; PAPER 0; CHR$ (162); CHR$ (161); INK 0; PAPER 4; CHR$ (162); CHR$ (160);
-6180 PRINT AT 21, 1; INK 0; PAPER 4; " "; CHR$ (161); INK 4; PAPER 0; " "; CHR$ (161); INK 0; PAPER 4; CHR$ (161); INK 4; PAPER 0; CHR$ (161); " "; INK 0; PAPER 4; CHR$ (161); " ";
-6190 PRINT #1; AT 0, 0; INK 4; "C   "; INK 0; PAPER 4; CHR$ (160); INK 4; PAPER 0; CHR$ (161); INK 0; PAPER 4; CHR$ (160); INK 4; PAPER 0; "   ";
-6200 PRINT #1; AT 1, 2; INK 4; "1 234 5 ";
-6210 GO SUB 2200
-6220 GO SUB 3190
-6230 RETURN 
-6240 REM combat display instructions
-6250 CLS 
-6260 PRINT AT 0, 0; INK 0; PAPER 5; "          SPACE "; n$(p);"           ";
-6270 PRINT AT 2, 1; "12345  The "; INK 5; "Combat Display"; INK 4; " shows";
-6280 PRINT AT 3, 0; "A"; PAPER 2; "     "; INK 2; PAPER 0; "4"; INK 4; " enemies within range and";
-6290 PRINT AT 4, 0; "B"; PAPER 6; " "; PAPER 2; "   "; PAPER 6; " "; INK 2; PAPER 0; "2"; INK 4; " the A-F/1-5 combination";
-6300 PRINT AT 5, 0; "C"; PAPER 6; "  "; PAPER 2; " "; PAPER 6; "  "; INK 2; PAPER 0; "1"; INK 4; " to attack. The number of";
-6310 PRINT AT 6, 0; "D"; PAPER 6; "  "; INK u(p, 1); PAPER 0; CHR$ (161); AT 6, 4; PAPER 6; "  "; INK 4; PAPER 0; "  attacks correspond to";
-6320 PRINT AT 7, 0; "E"; PAPER 6; "  "; PAPER 0; " "; PAPER 6; "  "; INK 4; PAPER 0; "  the "; INK 2; "red "; INK 4; "and "; INK 6; "yellow";
-6330 PRINT AT 8, 0; "F"; PAPER 6; " "; PAPER 0; "   "; PAPER 6; " "; INK 4; PAPER 0; "  numbers.";
-6340 PRINT AT 9, 4; INK 6; "31";
-6350 PRINT AT 11, 8; "A player has 4 shields";
-6360 PRINT AT 12, 8; "and a hull. The "; INK 5; "Combat ";
-6370 PRINT AT 13, 8; INK 5; "Display"; INK 4; " can be used to";
-6380 PRINT AT 14, 8; "see which shield will be";
-6390 PRINT AT 15, 8; "hit.";
-6400 PRINT AT 17, 0; "The hull is damaged if there areno shields on the attacked side.When the hull reaches 0 the shipis destroyed.";
-6410 GO SUB 2860
-6420 GO SUB 3060
-6430 GO SUB 2200
-6440 GO SUB 3190
-6450 RETURN 
-6460 REM about SPACE FLEET
-6470 CLS 
-6480 PRINT AT 0, 0; INK 0; PAPER 5; "          SPACE FLEET           ";
-6490 PRINT AT 1, 0; "       ";
-6500 PRINT AT 2, 0; "In the grim darkness of the far future, there is only war.";
-6510 PRINT AT 5, 0; "Select 2-4 human or AI players, and do turn-based battle using  the "; INK 5; "<Helm Computer>"; INK 4; " for movementand "; INK 5; "<Combat Display>"; INK 4; " to attack.";
-6520 PRINT AT 10, 0; "Each are accessed via a console,through which further help is   available by entering [i]."
-6530 PRINT AT 14, 0; INK 6; "Press any key to begin."
-6540 PRINT #1; AT 0, 0; INK 1; CHR$ (152); CHR$ (153);
-6550 PRINT #1; AT 0, 3; INK 2; CHR$ (148); CHR$ (156);
-6560 PRINT #1; AT 0, 6; INK 3; CHR$ (148); CHR$ (149);
-6570 PRINT #1; AT 0, 9; INK 6; CHR$ (158); CHR$ (149);
-6580 PRINT #1; AT 0, 12; INK 5; CHR$ (144); CHR$ (145);
-6590 PRINT #1; AT 0, 15; INK 4; CHR$ (144); CHR$ (145);
-6600 PRINT #1; AT 0, 18; INK 2; CHR$ (144); CHR$ (145);
-6610 PRINT #1; AT 0, 21; INK 3; CHR$ (144); CHR$ (145);
-6620 PRINT #1; AT 1, 0; INK 1; CHR$ (150); CHR$ (151);
-6630 PRINT #1; AT 1, 3; INK 2; CHR$ (150); CHR$ (157);
-6640 PRINT #1; AT 1, 6; INK 3; CHR$ (154); CHR$ (155);
-6650 PRINT #1; AT 1, 9; INK 6; CHR$ (159); CHR$ (151);
-6660 PRINT #1; AT 1, 12; INK 5; CHR$ (146); CHR$ (147);
-6670 PRINT #1; AT 1, 15; INK 4; CHR$ (146); CHR$ (147);
-6680 PRINT #1; AT 1, 18; INK 2; CHR$ (146); CHR$ (147);
-6690 PRINT #1; AT 1, 21; INK 3; CHR$ (146); CHR$ (147);
-6700 PAUSE 0
-6710 CLS 
-6720 RETURN 
+5460 REM helm computer instructions
+5470 CLS 
+5480 PRINT AT 0, 0; INK 0; PAPER 5; "          SPACE "; n$(p);"           ";
+5490 PRINT AT 2, 0; "Note the direction of your ship and consult the "; INK 5; "Helm Computer"; INK 4; ".  You must select a speed A-C and a manoeuvre 1-5."
+5500 PRINT AT 7, 0; "Example - A5 performs this move:"
+5510 PRINT AT 9, 2; INK u(p, 1); CHR$ (148); CHR$ (156); AT 10, 2; CHR$ (150); CHR$ (157); INK 4; " Also...";
+5520 PRINT AT 11, 5; "- Stay within map or die.";
+5530 PRINT AT 12, 5; "- Avoid planets."
+5540 PRINT AT 13, 0; INK u(p, 1); CHR$ (152); CHR$ (153); INK 4; "   - Optionally ram opponents."; AT 14, 0; INK u(p, 1); CHR$ (150); CHR$ (151);
+5550 PRINT AT 16, 0; INK 5; "Helm"; AT 16, 5; "Computer";
+5560 PRINT AT 17, 0; "A"; PAPER 0; CHR$ (160); CHR$ (162); INK 0; PAPER 4; CHR$ (161); CHR$ (162); INK 4; PAPER 0; CHR$ (161); INK 0; PAPER 4; CHR$ (162); CHR$ (161); INK 4; PAPER 0; CHR$ (162); CHR$ (160);
+5570 PRINT AT 18, 1; " "; CHR$ (162); INK 0; PAPER 4; " "; CHR$ (162); INK 4; PAPER 0; CHR$ (162); INK 0; PAPER 4; CHR$ (162); " "; INK 4; PAPER 0; CHR$ (162); " ";
+5580 PRINT AT 19, 1; " "; CHR$ (161); INK 0; PAPER 4; " "; CHR$ (161); INK 4; PAPER 0; CHR$ (161); INK 0; PAPER 4; CHR$ (161); " "; INK 4; PAPER 0; CHR$ (161); " ";
+5590 PRINT AT 20, 0; "B"; INK 0; PAPER 4; CHR$ (160); CHR$ (162); INK 4; PAPER 0; CHR$ (161); CHR$ (162); INK 0; PAPER 4; CHR$ (161); INK 4; PAPER 0; CHR$ (162); CHR$ (161); INK 0; PAPER 4; CHR$ (162); CHR$ (160);
+5600 PRINT AT 21, 1; INK 0; PAPER 4; " "; CHR$ (161); INK 4; PAPER 0; " "; CHR$ (161); INK 0; PAPER 4; CHR$ (161); INK 4; PAPER 0; CHR$ (161); " "; INK 0; PAPER 4; CHR$ (161); " ";
+5610 PRINT #1; AT 0, 0; INK 4; "C   "; INK 0; PAPER 4; CHR$ (160); INK 4; PAPER 0; CHR$ (161); INK 0; PAPER 4; CHR$ (160); INK 4; PAPER 0; "   ";
+5620 PRINT #1; AT 1, 2; INK 4; "1 234 5 ";
+5630 GO SUB 2200
+5640 GO SUB 3190
+5650 RETURN 
+5660 REM combat display instructions
+5670 CLS 
+5680 PRINT AT 0, 0; INK 0; PAPER 5; "          SPACE "; n$(p);"           ";
+5690 PRINT AT 2, 1; "12345  The "; INK 5; "Combat Display"; INK 4; " shows";
+5700 PRINT AT 3, 0; "A"; PAPER 2; "     "; INK 2; PAPER 0; "4"; INK 4; " enemies within range and";
+5710 PRINT AT 4, 0; "B"; PAPER 6; " "; PAPER 2; "   "; PAPER 6; " "; INK 2; PAPER 0; "2"; INK 4; " the A-F/1-5 combination";
+5720 PRINT AT 5, 0; "C"; PAPER 6; "  "; PAPER 2; " "; PAPER 6; "  "; INK 2; PAPER 0; "1"; INK 4; " to attack. The number of";
+5730 PRINT AT 6, 0; "D"; PAPER 6; "  "; INK u(p, 1); PAPER 0; CHR$ (161); AT 6, 4; PAPER 6; "  "; INK 4; PAPER 0; "  attacks correspond to";
+5740 PRINT AT 7, 0; "E"; PAPER 6; "  "; PAPER 0; " "; PAPER 6; "  "; INK 4; PAPER 0; "  the "; INK 2; "red "; INK 4; "and "; INK 6; "yellow";
+5750 PRINT AT 8, 0; "F"; PAPER 6; " "; PAPER 0; "   "; PAPER 6; " "; INK 4; PAPER 0; "  numbers.";
+5760 PRINT AT 9, 4; INK 6; "31";
+5770 PRINT AT 11, 8; "A player has 4 shields";
+5780 PRINT AT 12, 8; "and a hull. The "; INK 5; "Combat ";
+5790 PRINT AT 13, 8; INK 5; "Display"; INK 4; " can be used to";
+5800 PRINT AT 14, 8; "see which shield will be";
+5810 PRINT AT 15, 8; "hit.";
+5820 PRINT AT 17, 0; "The hull is damaged if there areno shields on the attacked side.When the hull reaches 0 the shipis destroyed.";
+5830 GO SUB 2860
+5840 GO SUB 3060
+5850 GO SUB 2200
+5860 GO SUB 3190
+5870 RETURN 
+5880 REM about SPACE FLEET
+5890 CLS 
+5900 PRINT AT 0, 0; INK 0; PAPER 5; "          SPACE FLEET           ";
+5910 PRINT AT 1, 0; "       ";
+5920 PRINT AT 2, 0; "In the grim darkness of the far future, there is only war.";
+5930 PRINT AT 5, 0; "Select 2-4 human or AI players, and do turn-based battle using  the "; INK 5; "<Helm Computer>"; INK 4; " for movementand "; INK 5; "<Combat Display>"; INK 4; " to attack.";
+5940 PRINT AT 10, 0; "Each are accessed via a console,through which further help is   available by entering [i]."
+5950 PRINT AT 14, 0; INK 6; "Press any key to begin."
+5960 PRINT #1; AT 0, 0; INK 1; CHR$ (152); CHR$ (153);
+5970 PRINT #1; AT 0, 3; INK 2; CHR$ (148); CHR$ (156);
+5980 PRINT #1; AT 0, 6; INK 3; CHR$ (148); CHR$ (149);
+5990 PRINT #1; AT 0, 9; INK 6; CHR$ (158); CHR$ (149);
+6000 PRINT #1; AT 0, 12; INK 5; CHR$ (144); CHR$ (145);
+6010 PRINT #1; AT 0, 15; INK 4; CHR$ (144); CHR$ (145);
+6020 PRINT #1; AT 0, 18; INK 2; CHR$ (144); CHR$ (145);
+6030 PRINT #1; AT 0, 21; INK 3; CHR$ (144); CHR$ (145);
+6040 PRINT #1; AT 1, 0; INK 1; CHR$ (150); CHR$ (151);
+6050 PRINT #1; AT 1, 3; INK 2; CHR$ (150); CHR$ (157);
+6060 PRINT #1; AT 1, 6; INK 3; CHR$ (154); CHR$ (155);
+6070 PRINT #1; AT 1, 9; INK 6; CHR$ (159); CHR$ (151);
+6080 PRINT #1; AT 1, 12; INK 5; CHR$ (146); CHR$ (147);
+6090 PRINT #1; AT 1, 15; INK 4; CHR$ (146); CHR$ (147);
+6100 PRINT #1; AT 1, 18; INK 2; CHR$ (146); CHR$ (147);
+6110 PRINT #1; AT 1, 21; INK 3; CHR$ (146); CHR$ (147);
+6120 PAUSE 0
+6130 CLS 
+6140 RETURN 
+6150 REM attack vectors data
+6160 DATA -3, -2, 4, -3, -1, 4, -3, 0, 4
+6170 DATA -3, 1, 4, -3, 2, 4, -2, -2, 1
+6180 DATA -2, -1, 2, -2, 0, 2, -2, 1, 2
+6190 DATA -2, 2, 1, -1, -2, 1, -1, -1, 3
+6200 DATA -1, 0, 1, -1, 1, 3, -1, 2, 1
+6210 DATA 0, -2, 1, 0, -1, 3, 0, 0, 0
+6220 DATA 0, 1, 3, 0, 2, 1, 1, -2, 1
+6230 DATA 1, -1, 3, 1, 0, 0, 1, 1, 3
+6240 DATA 1, 2, 1, 2, -2, 1, 2, -1, 0
+6250 DATA 2, 0, 0, 2, 1, 0, 2, 2, 1
+6260 REM movement vectors data
+6270 DATA -2, -1, -1, -2, -1, 0, -2, 0, 0
+6280 DATA -2, 1, 0, -2, 1, 1, -1, -1, -1
+6290 DATA -1, -1, 0, -1, 0, 0, -1, 1, 0
+6300 DATA -1, 1, 1, 0, 0, 0, 0, 0, -1
+6310 DATA 0, 0, 0, 0, 0, 1, 0, 0, 0
+6320 REM player UIs data
+6330 DATA 1, 5, 1, 1, 0, 0
+6340 DATA 2, 4, 5, 9, 3, 3
+6350 DATA 3, 2, 1, 9, 0, 3
+6360 DATA 6, 3, 5, 1, 3, 0
+6370 REM player names data
+6380 DATA "FLEET", "ELVES", "CHAOS", "HORDE"
+6390 REM player data
+6400 DATA 1, 1, 2, 3, 3, 3, 3, 4, 0, 0, 0
+6410 DATA 8, 12, 0, 3, 3, 3, 3, 4, 0, 0, 0
+6420 DATA 1, 12, 2, 3, 3, 3, 3, 4, 0, 0, 0
+6430 DATA 8, 1, 0, 3, 3, 3, 3, 4, 0, 0, 0
+6440 REM UDGs data
+6450 DATA 0, 3, 15, 31, 63, 63, 127, 127
+6460 DATA 0, 192, 240, 248, 252, 252, 254, 254 
+6470 DATA 127, 127, 63, 63, 31, 15, 3, 0 
+6480 DATA 254, 254, 252, 252, 248, 240, 192, 0
+6490 DATA 0, 0, 0, 0, 1, 7, 7, 15
+6500 DATA 0, 0, 0, 0, 128, 224, 224, 240 
+6510 DATA 15, 7, 7, 1, 0, 0, 0, 0
+6520 DATA 240, 224, 224, 128, 0, 0, 0, 0
+6530 DATA 0, 0, 0, 5, 15, 7, 15, 7
+6540 DATA 0, 0, 0, 160, 240, 224, 240, 224
+6550 DATA 7, 15, 7, 15, 5, 0, 0, 0 
+6560 DATA 224, 240, 224, 240, 160, 0, 0, 0 
+6570 DATA 0, 0, 0, 0, 80, 248, 240, 248 
+6580 DATA 248, 240, 248, 80, 0, 0, 0, 0 
+6590 DATA 0, 0, 0, 0, 10, 31, 15, 31 
+6600 DATA 31, 15, 31, 10, 0, 0, 0, 0 
+6610 DATA 0, 0, 0, 60, 60, 0, 0, 0 
+6620 DATA 0, 0, 24, 24, 24, 24, 0, 0 
+6630 DATA 0, 0, 0, 0, 24, 0, 0, 0
+6640 REM movement ai behaviour data
+6650 DATA 1, 2, 3, 4, 5
+6660 DATA 6, 7, 8, 9, 10
+6670 DATA 12, 12, 14, 14, 14
+6680 DATA 12, 12, 12, 14, 14
+6690 DATA 12, 12, 14, 14, 14
+6700 DATA 12, 12, 12, 14, 14
+6710 REM shields
+6720 DATA "Front", "Right", " Rear", " Left"
